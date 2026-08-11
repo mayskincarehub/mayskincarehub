@@ -936,6 +936,510 @@
                 padding: 0;
             }
         }
+
+        /* --- Search Bar Styles --- */
+        .search-container {
+            margin-top: 2rem;
+            display: flex;
+            justify-content: center;
+            width: 100%;
+            padding: 0 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.5s forwards;
+        }
+
+        .search-box {
+            position: relative;
+            width: 100%;
+            max-width: 600px;
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            padding: 0.2rem 0.5rem;
+            transition: var(--transition);
+        }
+
+        .search-box:focus-within {
+            border-color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.15);
+        }
+
+        .search-icon {
+            color: var(--text-secondary);
+            margin-left: 1.2rem;
+            font-size: 1.1rem;
+            transition: var(--transition);
+        }
+
+        .search-box:focus-within .search-icon {
+            color: var(--accent-color);
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: transparent;
+            border: none;
+            outline: none;
+            color: var(--text-primary);
+            font-size: 1.05rem;
+            font-family: inherit;
+        }
+
+        .search-box input::placeholder {
+            color: var(--text-secondary);
+            opacity: 0.7;
+        }
+
+        .clear-search-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .clear-search-btn:hover {
+            color: #ff4757;
+        }
+
+        /* --- Empty Search Message --- */
+        .empty-search-message {
+            text-align: center;
+            padding: 4rem 2rem;
+            color: var(--text-secondary);
+            background: var(--surface-color);
+            border-radius: 24px;
+            border: 1px solid var(--glass-border);
+            margin-top: 2rem;
+        }
+
+        /* --- Custom Request Badge & Styles in Cart --- */
+        .custom-req-badge {
+            background: rgba(212, 175, 55, 0.12);
+            color: var(--accent-color);
+            font-size: 0.75rem;
+            padding: 0.15rem 0.5rem;
+            border-radius: 4px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 0.25rem;
+            border: 1px solid rgba(212, 175, 55, 0.25);
+        }
+
+        .cart-item-price-req {
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        /* --- Modal Overlay & Card --- */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.75);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 2000;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .modal-overlay.show {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .modal-card {
+            background: var(--surface-color);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            width: 90%;
+            max-width: 480px;
+            padding: 2rem;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(212, 175, 55, 0.1);
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .modal-overlay.show .modal-card {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 1rem;
+        }
+
+        .modal-header h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--accent-color);
+            letter-spacing: 0.5px;
+        }
+
+        .close-modal {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .close-modal:hover {
+            color: #ff4757;
+            transform: rotate(90deg);
+        }
+
+        .form-group {
+            margin-bottom: 1.25rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .form-group input[type="text"],
+        .form-group textarea {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            padding: 0.8rem 1rem;
+            color: var(--text-primary);
+            font-family: inherit;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .form-group input[type="text"]:focus,
+        .form-group textarea:focus {
+            border-color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.05);
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+        }
+
+        .quantity-selector-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .quantity-selector-wrapper input[type="number"] {
+            width: 70px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            border-radius: 8px;
+            padding: 0.5rem;
+            color: var(--text-primary);
+            font-weight: 600;
+            font-family: inherit;
+            outline: none;
+            -moz-appearance: textfield;
+        }
+
+        .quantity-selector-wrapper input[type="number"]::-webkit-outer-spin-button,
+        .quantity-selector-wrapper input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        .modal-actions {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .modal-btn {
+            padding: 0.9rem 1.2rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 0.5rem;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+        }
+
+        .btn-add-cart {
+            background: var(--accent-color);
+            color: #000;
+        }
+
+        .btn-add-cart:hover {
+            background: var(--accent-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-whatsapp-direct {
+            background: #25D366;
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(37, 211, 102, 0.2);
+        }
+
+        .btn-whatsapp-direct:hover {
+            background: #1ebc59;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3);
+        }
+
+        /* --- Request Banner Section --- */
+        .request-banner-section {
+            padding: 0 5% 4rem;
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        .request-banner {
+            background: linear-gradient(135deg, var(--surface-color) 0%, rgba(212, 175, 55, 0.03) 100%);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: var(--transition);
+        }
+
+        .request-banner:hover {
+            border-color: rgba(212, 175, 55, 0.2);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3), 0 0 20px rgba(212, 175, 55, 0.05);
+        }
+
+        .request-banner-content h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.75rem;
+            color: var(--text-primary);
+        }
+
+        .request-banner-content p {
+            color: var(--text-secondary);
+            max-width: 700px;
+            font-size: 1.05rem;
+            font-weight: 300;
+        }
+
+        @media (max-width: 768px) {
+            .modal-actions {
+                grid-template-columns: 1fr;
+            }
+            .request-banner {
+                flex-direction: column;
+                text-align: center;
+                padding: 2rem;
+            }
+            .request-banner-content h2 {
+                font-size: 1.5rem;
+            }
+            .request-banner-content p {
+                font-size: 0.95rem;
+            }
+            #open-request-btn {
+                width: 100% !important;
+            }
+        }
+
+        /* --- Navbar Search Repositioning & Toggles --- */
+        .navbar-search-desktop {
+            margin-top: 0;
+            display: inline-flex;
+            max-width: 320px;
+            width: 100%;
+            opacity: 1;
+            animation: none;
+            padding: 0;
+            margin-left: 1.5rem;
+            margin-right: auto;
+        }
+
+        .navbar-search-desktop .search-box {
+            padding: 0.1rem 0.3rem;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 30px;
+        }
+
+        .navbar-search-desktop .search-box input {
+            padding: 0.5rem 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        .navbar-mobile-controls {
+            display: none;
+        }
+
+        .mobile-search-toggle {
+            background: transparent;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.3rem;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+        }
+
+        .mobile-search-toggle:hover,
+        .mobile-search-toggle.active {
+            color: var(--accent-color);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .navbar-search-mobile {
+            display: none;
+            width: 100%;
+            margin-top: 0.5rem;
+            animation: fadeInDown 0.3s ease;
+        }
+
+        .navbar-search-mobile.show {
+            display: flex;
+        }
+
+        .navbar-search-mobile .search-box {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.04);
+            border-radius: 30px;
+            padding: 0.1rem 0.3rem;
+        }
+
+        .navbar-search-mobile .search-box input {
+            padding: 0.5rem 0.8rem;
+            font-size: 0.95rem;
+        }
+
+        /* --- Image Sourcing Upload Styles --- */
+        .file-upload-wrapper {
+            position: relative;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px dashed var(--glass-border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100px;
+        }
+
+        .file-upload-wrapper:hover {
+            border-color: var(--accent-color);
+            background: rgba(212, 175, 55, 0.03);
+        }
+
+        .upload-placeholder {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .upload-placeholder span {
+            margin-top: 0.25rem;
+        }
+
+        .upload-preview {
+            position: relative;
+            width: 100%;
+            max-width: 150px;
+            height: 150px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--glass-border);
+        }
+
+        .upload-preview img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .remove-preview-btn {
+            position: absolute;
+            top: 5px;
+            right: 5px;
+            background: rgba(0, 0, 0, 0.6);
+            border: none;
+            color: #fff;
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.8rem;
+            transition: var(--transition);
+        }
+
+        .remove-preview-btn:hover {
+            background: #ff4757;
+        }
+
+        /* Media Query updates for Mobile Navbar layout */
+        @media (max-width: 768px) {
+            .navbar-search-desktop {
+                display: none;
+            }
+            .navbar-mobile-controls {
+                display: flex;
+                gap: 0.5rem;
+                align-items: center;
+            }
+            .mobile-menu-btn {
+                display: flex !important;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                border-radius: 50%;
+            }
+        }
     </style>
 </head>
 <body>
@@ -946,9 +1450,38 @@
             <img src="Misc/Logo.jpeg" alt="MAY SKINCARE HUB Logo">
             <span>MAY SKINCARE HUB</span>
         </a>
-        <button class="mobile-menu-btn" id="mobile-menu-btn">
-            <i class="fas fa-bars"></i>
-        </button>
+        
+        <!-- Desktop Search Bar -->
+        <div class="search-container navbar-search-desktop">
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="product-search" placeholder="Search products..." autocomplete="off">
+                <button id="clear-search" class="clear-search-btn" style="display: none;" title="Clear Search">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="navbar-mobile-controls">
+            <button class="mobile-search-toggle" id="mobile-search-toggle" title="Toggle Search">
+                <i class="fas fa-search"></i>
+            </button>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Search Bar (Full-Width Row, togglable) -->
+        <div class="navbar-search-mobile" id="navbar-search-mobile">
+            <div class="search-box">
+                <i class="fas fa-search search-icon"></i>
+                <input type="text" id="product-search-mobile" placeholder="Search products..." autocomplete="off">
+                <button id="clear-search-mobile" class="clear-search-btn" style="display: none;" title="Clear Search">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+
         <div class="nav-menu" id="nav-menu">
             <!-- Navigation links will be injected here -->
         </div>
@@ -971,6 +1504,26 @@
     <!-- Products Section -->
     <main class="products-container">
         <h2 class="section-title">Our Collection</h2>
+        
+        <!-- Search Results Section (Hidden by Default) -->
+        <section class="products-section" id="search-results-section" style="display: none; margin-bottom: 3rem;">
+            <h2 class="section-title" id="search-results-title">Search Results</h2>
+            <div class="products-grid" id="search-results-grid">
+                <!-- Search results will be injected here -->
+            </div>
+            <div id="search-no-results" class="empty-search-message" style="display: none;">
+                <i class="fas fa-search-minus" style="font-size: 3rem; color: var(--text-secondary); margin-bottom: 1rem;"></i>
+                <p>We couldn't find any products matching your search.</p>
+                <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap;">
+                    <button id="search-reset-btn" class="btn-whatsapp selected" style="width: auto;">
+                        <i class="fas fa-undo"></i> Show All Products
+                    </button>
+                    <button id="search-request-btn" class="btn-whatsapp" style="width: auto; background: var(--accent-color); color: #000; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);">
+                        <i class="fas fa-paper-plane"></i> Request it here
+                    </button>
+                </div>
+            </div>
+        </section>
         
         <!-- Body Care Section -->
         <section class="products-section" id="body-care-section">
@@ -1017,6 +1570,19 @@
             <h2 class="section-title">Health & Wellness</h2>
             <div class="products-grid" id="health-wellness-grid">
                 <!-- Health & Wellness products will be injected here -->
+            </div>
+        </section>
+
+        <!-- Request Banner Section -->
+        <section class="request-banner-section">
+            <div class="request-banner">
+                <div class="request-banner-content">
+                    <h2>Looking for a specific skincare product?</h2>
+                    <p>If there's a product you need that isn't listed in our collection, request it directly! Let us source it and deliver it to you.</p>
+                </div>
+                <button class="btn-whatsapp" id="open-request-btn" style="width: auto; background: var(--accent-color); color: #000; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.2);">
+                    <i class="fas fa-paper-plane"></i> Request a Product
+                </button>
             </div>
         </section>
     </main>
@@ -1076,6 +1642,56 @@
         </div>
     </div>
 
+    <!-- Request Product Modal -->
+    <div class="modal-overlay" id="request-modal-overlay">
+        <div class="modal-card">
+            <div class="modal-header">
+                <h3>Request a Product</h3>
+                <button class="close-modal" id="close-request-modal" title="Close Modal"><i class="fas fa-times"></i></button>
+            </div>
+            <form id="request-product-form">
+                <div class="form-group">
+                    <label for="req-product-name">Product Name *</label>
+                    <input type="text" id="req-product-name" placeholder="Enter product name (e.g. CeraVe Moisturising Cream)" required>
+                </div>
+                <div class="form-group">
+                    <label for="req-product-qty">Quantity Needed *</label>
+                    <div class="quantity-selector-wrapper">
+                        <button type="button" class="qty-btn" id="req-qty-minus">-</button>
+                        <input type="number" id="req-product-qty" value="1" min="1" required readonly>
+                        <button type="button" class="qty-btn" id="req-qty-plus">+</button>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Product Image (Optional)</label>
+                    <div class="file-upload-wrapper" id="file-upload-zone">
+                        <input type="file" id="req-product-image" accept="image/*" style="display: none;">
+                        <div class="upload-placeholder" id="upload-placeholder">
+                            <i class="fas fa-camera" style="font-size: 1.5rem; margin-bottom: 0.5rem; color: var(--text-secondary);"></i>
+                            <span>Click to upload photo</span>
+                        </div>
+                        <div class="upload-preview" id="upload-preview" style="display: none;">
+                            <img id="preview-img" src="" alt="Product Preview">
+                            <button type="button" class="remove-preview-btn" id="remove-preview-btn" title="Remove Photo"><i class="fas fa-times"></i></button>
+                        </div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="req-product-details">Additional Details (Optional)</label>
+                    <textarea id="req-product-details" rows="3" placeholder="Provide size, skin type, or other details if any"></textarea>
+                </div>
+                <div class="modal-actions">
+                    <button type="submit" class="modal-btn btn-add-cart" id="req-add-to-cart">
+                        <i class="fas fa-cart-plus"></i> Add to Cart
+                    </button>
+                    <button type="button" class="modal-btn btn-whatsapp-direct" id="req-whatsapp-now">
+                        <i class="fab fa-whatsapp"></i> Request on WhatsApp
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             // Mobile Menu Toggle
@@ -1103,7 +1719,7 @@
             const phoneNumber = "254716314057";
 
             // Cart State
-            let cart = {}; // { productId: { name, price, quantity, image } }
+            let cart = {}; // { productId: { name, price, quantity, image, isCustom, details } }
             
             // Cart DOM Elements
             const floatingCartBtn = document.getElementById('floating-cart-btn');
@@ -1115,11 +1731,81 @@
             const cartTotalPrice = document.getElementById('cart-total-price');
             const checkoutBtn = document.getElementById('checkout-btn');
 
+            // Search DOM Elements
+            const searchInput = document.getElementById('product-search');
+            const clearSearchBtn = document.getElementById('clear-search');
+            
+            const mobileSearchToggle = document.getElementById('mobile-search-toggle');
+            const navbarSearchMobile = document.getElementById('navbar-search-mobile');
+            const searchInputMobile = document.getElementById('product-search-mobile');
+            const clearSearchBtnMobile = document.getElementById('clear-search-mobile');
+            
+            const searchResultsSection = document.getElementById('search-results-section');
+            const searchResultsGrid = document.getElementById('search-results-grid');
+            const searchNoResults = document.getElementById('search-no-results');
+            const searchResultsTitle = document.getElementById('search-results-title');
+            
+            // Modal DOM Elements
+            const requestModalOverlay = document.getElementById('request-modal-overlay');
+            const closeRequestModalBtn = document.getElementById('close-request-modal');
+            const requestProductForm = document.getElementById('request-product-form');
+            const reqProductNameInput = document.getElementById('req-product-name');
+            const reqProductQtyInput = document.getElementById('req-product-qty');
+            const reqProductDetailsInput = document.getElementById('req-product-details');
+            const reqQtyMinusBtn = document.getElementById('req-qty-minus');
+            const reqQtyPlusBtn = document.getElementById('req-qty-plus');
+            const openRequestBtn = document.getElementById('open-request-btn');
+            
+            // File Upload DOM Elements
+            const reqProductImageInput = document.getElementById('req-product-image');
+            const fileUploadZone = document.getElementById('file-upload-zone');
+            const uploadPlaceholder = document.getElementById('upload-placeholder');
+            const uploadPreview = document.getElementById('upload-preview');
+            const previewImg = document.getElementById('preview-img');
+            const removePreviewBtn = document.getElementById('remove-preview-btn');
+            
+            let selectedImageDataUrl = "";
+
             // Toggle Cart Sidebar
             const toggleCart = () => {
                 cartSidebar.classList.toggle('open');
                 cartOverlay.classList.toggle('show');
             };
+
+            // Toggle Request Modal
+            const openRequestModal = () => {
+                requestModalOverlay.classList.add('show');
+            };
+
+            const closeRequestModal = () => {
+                requestModalOverlay.classList.remove('show');
+                requestProductForm.reset();
+                reqProductQtyInput.value = "1";
+                // Reset file upload state
+                selectedImageDataUrl = "";
+                previewImg.src = "";
+                uploadPreview.style.display = "none";
+                uploadPlaceholder.style.display = "flex";
+            };
+
+            if (openRequestBtn) openRequestBtn.addEventListener('click', openRequestModal);
+            if (closeRequestModalBtn) closeRequestModalBtn.addEventListener('click', closeRequestModal);
+            requestModalOverlay.addEventListener('click', (e) => {
+                if (e.target === requestModalOverlay) closeRequestModal();
+            });
+
+            // Quantity buttons in Modal
+            reqQtyMinusBtn.addEventListener('click', () => {
+                let val = parseInt(reqProductQtyInput.value);
+                if (val > 1) {
+                    reqProductQtyInput.value = val - 1;
+                }
+            });
+
+            reqQtyPlusBtn.addEventListener('click', () => {
+                let val = parseInt(reqProductQtyInput.value);
+                reqProductQtyInput.value = val + 1;
+            });
 
             floatingCartBtn.addEventListener('click', toggleCart);
             closeCartBtn.addEventListener('click', toggleCart);
@@ -1149,16 +1835,29 @@
                     cartKeys.forEach(id => {
                         const item = cart[id];
                         totalItems += item.quantity;
-                        const itemSubtotal = item.price * item.quantity;
-                        totalPrice += itemSubtotal;
+                        
+                        let priceText = "";
+                        let itemSubtotal = 0;
+                        
+                        if (item.isCustom) {
+                            priceText = `
+                                <span class="custom-req-badge">Custom Request</span><br>
+                                <span class="cart-item-price-req">Price on Request</span>
+                            `;
+                            // itemSubtotal is 0
+                        } else {
+                            itemSubtotal = item.price * item.quantity;
+                            totalPrice += itemSubtotal;
+                            priceText = `<div class="cart-item-price">KSH ${formatMoney(item.price)}</div>`;
+                        }
 
                         const itemEl = document.createElement('div');
                         itemEl.className = 'cart-item';
                         itemEl.innerHTML = `
                             <img src="${item.image}" alt="${item.name}" class="cart-item-image" onerror="this.src='Misc/Logo.jpeg'">
                             <div class="cart-item-details">
-                                <h4>${item.name}</h4>
-                                <div class="cart-item-price">KSH ${formatMoney(item.price)}</div>
+                                <h4 title="${item.name}">${item.name}</h4>
+                                ${priceText}
                                 <div class="cart-item-controls">
                                     <button class="qty-btn minus" data-id="${id}">-</button>
                                     <span class="qty-display">${item.quantity}</span>
@@ -1173,8 +1872,11 @@
                     });
                 }
 
+                let hasCustomItems = Object.values(cart).some(item => item.isCustom);
                 cartCountBadge.textContent = totalItems;
-                cartTotalPrice.textContent = `KSH ${formatMoney(totalPrice)}`;
+                cartTotalPrice.textContent = hasCustomItems 
+                    ? `KSH ${formatMoney(totalPrice)} + TBD` 
+                    : `KSH ${formatMoney(totalPrice)}`;
                 
                 // Update product card buttons
                 document.querySelectorAll('.btn-select').forEach(btn => {
@@ -1239,17 +1941,32 @@
                 
                 let orderLines = [];
                 let grandTotal = 0;
+                let hasCustomItems = false;
 
                 Object.values(cart).forEach((item, index) => {
-                    const subtotal = item.price * item.quantity;
-                    grandTotal += subtotal;
-                    orderLines.push(`${index + 1}. ${item.name} x ${item.quantity} - KSH ${formatMoney(subtotal)}.`);
+                    if (item.isCustom) {
+                        hasCustomItems = true;
+                        let customLine = `${index + 1}. [CUSTOM REQUEST] ${item.name} x ${item.quantity} - (Price on Request)`;
+                        if (item.details) customLine += ` [Details: ${item.details}]`;
+                        if (item.hasImage) customLine += ` [Note: Image attached - I will send picture in chat next]`;
+                        orderLines.push(customLine);
+                    } else {
+                        const subtotal = item.price * item.quantity;
+                        grandTotal += subtotal;
+                        orderLines.push(`${index + 1}. ${item.name} x ${item.quantity} - KSH ${formatMoney(subtotal)}.`);
+                    }
                 });
+
+                let totalText = `\n\nTotal: KSH ${formatMoney(grandTotal)}`;
+                if (hasCustomItems) {
+                    totalText += ` + Custom Items (Price TBD)`;
+                }
 
                 const message = encodeURIComponent(
                     `Hi ${companyName}, I'd like to place an order:\n` +
                     orderLines.join('\n') +
-                    `\n\nTotal: KSH ${formatMoney(grandTotal)}.\nThank you!`
+                    totalText +
+                    `\nThank you!`
                 );
                 
                 const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
@@ -1292,29 +2009,66 @@
                 { id: 'prod_29', image: '29.jpeg', name: 'Sadoer salicylic acid face toner', price: 500 },
                 { id: 'prod_30', image: '30.jpeg', name: 'Vaseline daily brightening lotions', price: 1000 },
                 { id: 'prod_31', image: '31.jpeg', name: 'Vaseline body oils', price: 700 },
-                { id: 'prod_32', image: '32.jpeg', name: 'Double dose molata body cream', price: 700 },
-                { id: 'prod_33', image: '33.jpeg', name: 'Double dose molata shower cream', price: 800 },
-                { id: 'prod_34', image: '34.jpeg', name: 'Double dose molata body oil', price: 800 }
+                { id: 'prod_32', image: '32.jpeg', name: 'Double dose molato body cream', price: 700 },
+                { id: 'prod_33', image: '33.jpeg', name: 'Double dose molato shower cream', price: 800 },
+                { id: 'prod_34', image: '34.jpeg', name: 'Double dose molato body oil', price: 800 },
+                { id: 'prod_35', image: '35.jpeg', name: 'Eos body lotions', price: 1000,},
+                { id: 'prod_36', image: '36.jpeg', name: 'Estelin tinted sunscreen spf100', price: 800},
+                { id:'prod_37' , image:'37.jpeg', name:'Estelin sunscreen', price: 600},
+                { id:'prod_38',  image:'38.jpeg',name:'Sadoer collagen face cream',price:450},
+                { id:'prod_39',  image:'39.jpeg',name:'Arabic roll on',price:250},
+                { id:'prod_40',  image:'40.jpeg',name:'Arabic body mists',price:500},
+                { id:'prod_41',  image:'41.jpeg',name:'Coffee scrub',price:450},
+                { id:'prod_42',  image:'42.jpeg',name:'Flat tummy tea with moringa',price:1200},
+                { id:'prod_43',  image:'43.jpeg',name:'Nivea roll on',price:400},
+                { id:'prod_44',  image:'44.jpeg',name:'Al-rehab soft perfumes',price:350},
+                { id:'prod_45',  image:'45.jpeg',name:'Dr zhara shower gels',price:550},
+                { id:'prod_46',  image:'46.jpeg',name:'Collagen with burn',price:1500},
+                { id:'prod_47',  image:'47.jpeg',name:'Dr Davey body oils',price:600},
+                {id: 'prod_48',  image:'48.jpeg',name:'Flat tummy tea',price:1200},
+                {id: 'prod_49',  image:'49.jpeg',name:'Roll on',price:250},
+                {id: 'prod_50',  image:'50.jpeg',name:'Face brush',price:250},
+                {id: 'prod_51',  image:'51.jpeg',name:'Hand cream',price:150},
+                {id: 'prod_52',  image:'52.jpeg',name:'Warachi Pink chiffon hand and body lotion',price:650},
+                {id: 'prod_53',  image:'53.jpeg',name:'Warachi Vitamin C brightening body lotion',price:650},
+                {id: 'prod_55',  image:'55.jpeg',name:'Hayatti',price:600},
+                {id: 'prod_56',  image:'56.jpeg',name:'Warachi Men body and face lotion',price:650},
+                {id: 'prod_57',  image:'57.jpeg',name:'Tony Airo tumeric oil',price:350},
+                {id: 'prod_58',  image:'58.jpeg',name:'Yara pink 50ml',price:500},
+                {id: 'prod_59',  image:'59.jpeg',name:'Invictus 50ml',price:700},
+                {id: 'prod_60',  image:'60.jpeg',name:'Mini arabic body mists',price:300},
+                {id: 'prod_61',  image:'61.jpeg',name:'Sexy scandal',price:650},
+                {id: 'prod_62',  image:'62.jpeg',name:'Dove soaps',price:300},
+                {id: 'prod_63',  image:'63.jpeg',name:'Al rehab soft perfume',price:350},
+                {id: 'prod_64',  image:'64.jpeg',name:'Vaseline cocoa butter lotion ',price:1000},
+                {id: 'prod_65',  image:'65.jpeg',name:'Women`s probiotic gummies',price:1000},
+                {id: 'prod_66',  image:'66.jpeg',name:'Pure egyptian shower gel',price:800},
+                {id: 'prod_67',  image:'67.jpeg',name:'Warachi sweet passion hand and body lotion',price:650},
+                
             ];
             
             // Define which products go in each section (manually configurable)
             const bodyCareProducts = [
                 'prod_1', 'prod_2', 'prod_3', 'prod_4', 'prod_5', 'prod_7', 'prod_8', 
-                'prod_18', 'prod_22', 'prod_28', 'prod_30', 'prod_32', 'prod_33', 'prod_34'
+                'prod_18', 'prod_22', 'prod_28', 'prod_30', 'prod_32', 'prod_33',
+                'prod_34','prod_35','prod_39','prod_41','prod_43','prod_45','prod_47',
+                'prod_46','prod_49','prod_51','prod_52','prod_53','prod_56','prod_62','prod_64','prod_66','prod_67',
             ];
             
-            const fragrancesProducts = ['prod_6'];
+            const fragrancesProducts = ['prod_6','prod_44','prod_40','prod_55','prod_58','prod_59',
+            'prod_60','prod_61',];
             
             const faceCareProducts = [
                 'prod_9', 'prod_10', 'prod_11', 'prod_12', 'prod_13', 'prod_14', 'prod_15', 
-                'prod_23', 'prod_24', 'prod_25', 'prod_26', 'prod_27', 'prod_29'
+                'prod_23', 'prod_24', 'prod_25', 'prod_26', 'prod_27', 'prod_29','prod_38','prod_50'
+                ,'prod_63',
             ];
             
-            const buttersOilsProducts = ['prod_16', 'prod_17', 'prod_21', 'prod_31'];
+            const buttersOilsProducts = ['prod_16', 'prod_17', 'prod_21', 'prod_31','prod_57',];
             
-            const sunCareProducts = ['prod_19'];
+            const sunCareProducts = ['prod_19','prod_36','prod_37'];
             
-            const healthWellnessProducts = ['prod_20'];
+            const healthWellnessProducts = ['prod_20','prod_42','prod_48','prod_65',];
             
             // Create a map of productId to product for easy lookup
             const productMap = {};
@@ -1322,6 +2076,17 @@
                 productMap[product.id] = product;
             });
             
+            // Category Name Helper
+            const getProductCategoryName = (productId) => {
+                if (bodyCareProducts.includes(productId)) return "Body Care";
+                if (fragrancesProducts.includes(productId)) return "Fragrances";
+                if (faceCareProducts.includes(productId)) return "Face Care";
+                if (buttersOilsProducts.includes(productId)) return "Butters & Oils";
+                if (sunCareProducts.includes(productId)) return "Sun Care";
+                if (healthWellnessProducts.includes(productId)) return "Health & Wellness";
+                return "Premium Collection";
+            };
+
             // Function to render products into a specific grid
             const renderProductsToGrid = (productIds, gridElement) => {
                 // Filter to only include valid products
@@ -1346,7 +2111,7 @@
                             <div class="card-overlay"></div>
                         </div>
                         <div class="card-content">
-                            <div class="product-category">Premium Collection</div>
+                            <div class="product-category">${getProductCategoryName(product.id)}</div>
                             <h3 class="product-title">${product.name}</h3>
                             <div class="product-price">KSH ${formatMoney(product.price)}</div>
                             <button class="btn-whatsapp btn-select" data-id="${product.id}" data-name="${product.name}" data-price="${product.price}">
@@ -1384,11 +2149,247 @@
                 <a href="#butters-oils-section">Butters & Oils</a>
                 <a href="#sun-care-section">Sun Care</a>
                 <a href="#health-wellness-section">Health & Wellness</a>
+                <a href="#" id="nav-request-link" style="color: var(--accent-color); font-weight: 600;"><i class="fas fa-paper-plane" style="margin-right: 5px;"></i>Request Product</a>
             `;
+
+            // Open request modal from nav link
+            document.getElementById('nav-request-link').addEventListener('click', (e) => {
+                e.preventDefault();
+                openRequestModal();
+            });
 
             // Close mobile menu when a nav link is tapped
             navMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', closeMobileMenu);
+                if (link.id !== 'nav-request-link') {
+                    link.addEventListener('click', closeMobileMenu);
+                }
+            });
+
+            // --- Mobile Search Toggle ---
+            mobileSearchToggle.addEventListener('click', () => {
+                // Close mobile menu if open
+                navMenuEl.classList.remove('show');
+                contactInfoEl.classList.remove('show');
+                mobileMenuBtn.querySelector('i').className = 'fas fa-bars';
+                
+                const isSearchOpen = navbarSearchMobile.classList.toggle('show');
+                mobileSearchToggle.classList.toggle('active', isSearchOpen);
+                if (isSearchOpen) {
+                    searchInputMobile.focus();
+                }
+            });
+            
+            // Close mobile search when mobile hamburger menu is opened
+            mobileMenuBtn.addEventListener('click', () => {
+                navbarSearchMobile.classList.remove('show');
+                mobileSearchToggle.classList.remove('active');
+            });
+
+            // --- Search Functionality ---
+            const categorySections = [
+                document.getElementById('body-care-section'),
+                document.getElementById('fragrances-section'),
+                document.getElementById('face-care-section'),
+                document.getElementById('butters-oils-section'),
+                document.getElementById('sun-care-section'),
+                document.getElementById('health-wellness-section')
+            ];
+
+            const performSearch = (e) => {
+                let query = "";
+                if (e && e.target) {
+                    query = e.target.value.toLowerCase().trim();
+                    // Sync the inputs
+                    if (e.target === searchInput) {
+                        searchInputMobile.value = e.target.value;
+                    } else if (e.target === searchInputMobile) {
+                        searchInput.value = e.target.value;
+                    }
+                } else {
+                    query = searchInput.value.toLowerCase().trim();
+                }
+                
+                if (query === '') {
+                    // Hide search results section
+                    searchResultsSection.style.display = 'none';
+                    // Show all standard categories
+                    categorySections.forEach(section => {
+                        if (section) section.style.display = 'block';
+                    });
+                    clearSearchBtn.style.display = 'none';
+                    clearSearchBtnMobile.style.display = 'none';
+                    return;
+                }
+                
+                // Show clear search buttons
+                clearSearchBtn.style.display = 'flex';
+                clearSearchBtnMobile.style.display = 'flex';
+                
+                // Hide all standard categories
+                categorySections.forEach(section => {
+                    if (section) section.style.display = 'none';
+                });
+                
+                // Show search results section
+                searchResultsSection.style.display = 'block';
+                
+                // Filter matching products
+                const matchingProducts = myProducts.filter(product => {
+                    const nameMatch = product.name.toLowerCase().includes(query);
+                    const categoryMatch = getProductCategoryName(product.id).toLowerCase().includes(query);
+                    return nameMatch || categoryMatch;
+                });
+                
+                if (matchingProducts.length === 0) {
+                    searchResultsGrid.innerHTML = '';
+                    searchResultsTitle.style.display = 'none';
+                    searchNoResults.style.display = 'block';
+                } else {
+                    searchResultsTitle.style.display = 'block';
+                    searchResultsTitle.textContent = `Search Results (${matchingProducts.length})`;
+                    searchNoResults.style.display = 'none';
+                    
+                    // Render matching products
+                    renderProductsToGrid(matchingProducts.map(p => p.id), searchResultsGrid);
+                }
+            };
+
+            searchInput.addEventListener('input', performSearch);
+            searchInputMobile.addEventListener('input', performSearch);
+            
+            clearSearchBtn.addEventListener('click', () => {
+                searchInput.value = '';
+                searchInputMobile.value = '';
+                performSearch();
+                searchInput.focus();
+            });
+
+            clearSearchBtnMobile.addEventListener('click', () => {
+                searchInput.value = '';
+                searchInputMobile.value = '';
+                performSearch();
+                searchInputMobile.focus();
+            });
+
+            document.getElementById('search-reset-btn').addEventListener('click', () => {
+                searchInput.value = '';
+                searchInputMobile.value = '';
+                performSearch();
+            });
+
+            document.getElementById('search-request-btn').addEventListener('click', () => {
+                reqProductNameInput.value = searchInput.value || searchInputMobile.value;
+                openRequestModal();
+            });
+
+            // --- File Upload Logic ---
+            fileUploadZone.addEventListener('click', (e) => {
+                if (e.target.closest('#remove-preview-btn')) return;
+                reqProductImageInput.click();
+            });
+
+            reqProductImageInput.addEventListener('change', (e) => {
+                const file = e.target.files[0];
+                if (file) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        selectedImageDataUrl = event.target.result;
+                        previewImg.src = selectedImageDataUrl;
+                        uploadPlaceholder.style.display = 'none';
+                        uploadPreview.style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            removePreviewBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                selectedImageDataUrl = "";
+                previewImg.src = "";
+                uploadPreview.style.display = 'none';
+                uploadPlaceholder.style.display = 'flex';
+                reqProductImageInput.value = "";
+            });
+
+            // Drag and Drop support
+            fileUploadZone.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                fileUploadZone.style.borderColor = 'var(--accent-color)';
+            });
+
+            fileUploadZone.addEventListener('dragleave', () => {
+                fileUploadZone.style.borderColor = 'var(--glass-border)';
+            });
+
+            fileUploadZone.addEventListener('drop', (e) => {
+                e.preventDefault();
+                fileUploadZone.style.borderColor = 'var(--glass-border)';
+                const file = e.dataTransfer.files[0];
+                if (file && file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = (event) => {
+                        selectedImageDataUrl = event.target.result;
+                        previewImg.src = selectedImageDataUrl;
+                        uploadPlaceholder.style.display = 'none';
+                        uploadPreview.style.display = 'block';
+                    };
+                    reader.readAsDataURL(file);
+                }
+            });
+
+            // --- Custom Product Request Form Submission ---
+            requestProductForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const name = reqProductNameInput.value.trim();
+                const qty = parseInt(reqProductQtyInput.value);
+                const details = reqProductDetailsInput.value.trim();
+                
+                if (!name) return;
+                
+                const customId = `custom_req_${Date.now()}`;
+                
+                // Add to Cart as custom item
+                cart[customId] = {
+                    name: name,
+                    price: 0,
+                    quantity: qty,
+                    image: selectedImageDataUrl || 'Misc/Logo.jpeg',
+                    isCustom: true,
+                    details: details,
+                    hasImage: !!selectedImageDataUrl
+                };
+                
+                closeRequestModal();
+                updateCartUI();
+                
+                // Open cart sidebar to show it was added!
+                cartSidebar.classList.add('open');
+                cartOverlay.classList.add('show');
+            });
+
+            document.getElementById('req-whatsapp-now').addEventListener('click', () => {
+                const name = reqProductNameInput.value.trim();
+                const qty = parseInt(reqProductQtyInput.value);
+                const details = reqProductDetailsInput.value.trim();
+                
+                if (!name) {
+                    reqProductNameInput.reportValidity();
+                    return;
+                }
+                
+                const message = encodeURIComponent(
+                    `Hi ${companyName}, I'd like to request a product that is not listed:\n` +
+                    `- Product: ${name}\n` +
+                    `- Quantity: ${qty}` +
+                    `${details ? `\n- Details: ${details}` : ''}` +
+                    `${selectedImageDataUrl ? `\n- [Image attached: I will send the picture in this chat next!]` : ''}\n\n` +
+                    `Please let me know if it is available and the price. Thank you!`
+                );
+                
+                const whatsappUrl = `https://wa.me/${phoneNumber}?text=${message}`;
+                window.open(whatsappUrl, '_blank');
+                closeRequestModal();
             });
 
             // Event delegation for Add to Cart buttons (using event bubbling)
